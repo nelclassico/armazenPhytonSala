@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Sejam bem vindos ao Armazem Senai</h1>
+    {% if session.username %}
+        <p>Olá {{ session.username }} Você está logadom como  {{ session.funcao }}</p>
+        <p>Use o menu acima para navegar pelo sistema</p>
+    {% else %}
+        <p>Você não está logado</p>
+        <p><a href="{{ url_for('login')}}">Faça Login</a> Para acessar o sistema</p>
+    {% endif %}
+{% endblock %}
