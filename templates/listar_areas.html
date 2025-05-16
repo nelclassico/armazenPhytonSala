@@ -1,0 +1,33 @@
+{% extends 'base.html %}
+
+{% block title %} Areas de Armazenamento - {{ super() }} {% endblock %}
+
+{% block content %}
+    <h1>Áreas de Armazenamento</h1>
+    <a href="{{ url_for('adcionar_area') }}" class="btn btn-success">Adicionar nova área</a>
+    {% if areas %}
+        <div class="container">
+            <div class="row">
+                {% for area in areas %}
+                <div class="col-md-3">
+                    <h4>Id</h4>
+                    <p>{{ area.id_area }}</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Nome</h4>
+                    <p>{{ area.nome }}</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Descrição</h4>
+                    <p>{{ area.descricao }}</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Ações</h4>
+                    <a href="{{ url_for('editar_area', id_area=area.id_area)}}" class="btn btn success">Editar</a>
+                    <a href="{{ url_for('excluir_area', id_area=area.id_area) }}" class="btn btn-danger" onclick="">Excluir</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% end block %}
